@@ -5,11 +5,31 @@
 
     <ul>
         @foreach ($jobs as $job)
-            <li>
-                <a href="/jobs/{{ $job['id'] }}" class="text-blue-500 hover:underline">
-                    <strong>{{ $job['title'] }}:</strong> Pays {{ $job['salary'] }} per year.
+            <li class="mb-4">
+                <a href="/jobs/{{ $job->id }}" class="text-blue-500 hover:underline">
+                <strong>{{ $job->employer->name }}</strong> - {{ $job->title }}  
+                pays {{ $job->salary }} per year.
                 </a>
+                
             </li>
+    <div class="mb-6">
+    <a href="/jobs/{{ $job->id }}" class="block px-4 py-6 border border-gray-200 rounded-lg">
+        <div class="font-bold text-blue-500 text-sm">{{ $job->employer->name }}</div>
+        <div>
+            <strong>{{ $job->title }}</strong> — Pays {{ $job->salary }} per year.
+        </div>
+    </a>
+
+    <div class="px-4 py-2">
+        @foreach($job->tags as $tag)
+            <span class="bg-gray-200 text-gray-700 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">
+                {{ $tag->name }}
+            </span>
+        @endforeach
+    </div>
+</div>
+
+
         @endforeach
     </ul>
 </x-layout>

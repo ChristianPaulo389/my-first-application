@@ -13,7 +13,12 @@ class Job extends Model
 
     // A job belongs to an employer
     public function employer()
-    {
-        return $this->belongsTo(Employer::class);
-    }
+{
+    return $this->belongsTo(\App\Models\Employer::class);
+}
+    public function tags()
+{
+    return $this->belongsToMany(\App\Models\Tag::class, foreignPivotKey: 'job_listing_id');
+}
+
 }
