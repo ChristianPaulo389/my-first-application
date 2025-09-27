@@ -22,13 +22,10 @@
     </a>
 </div>
 
-<div class="px-4 py-4">
-    @foreach($job->tags as $tag)
-        <span class="bg-gray-200 text-gray-700 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">
-            {{ $tag->name }}
-        </span>
-    @endforeach
+<div class="mt-6">
+    {{ $jobs->links() }}
 </div>
+
 
 
 
