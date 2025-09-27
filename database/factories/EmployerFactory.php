@@ -15,9 +15,10 @@ class EmployerFactory extends Factory
      * @return array<string, mixed>
      */
     public function definition(): array
-    {
-        return [
-            'name' => fake()->company(),
-        ];
-    }
+{
+    return [
+        'name' => fake()->company(),
+    ];
+}
+
 }
