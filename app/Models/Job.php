@@ -10,7 +10,7 @@ class Job extends Model
     use HasFactory;
     public function employer()
 {
-    return $this->belongsTo(\App\Models\Employer::class);
+    return $this->belongsTo(Employer::class);
 }  
 
     public function tags()
