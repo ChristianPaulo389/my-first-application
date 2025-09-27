@@ -8,6 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Job extends Model
 {
     use HasFactory;
+    public function employer()
+{
+    return $this->belongsTo(\App\Models\Employer::class);
+}  
+
+    public function tags()
+{
+    return $this->belongsToMany(\App\Models\Tag::class, foreignPivotKey: "job_listing_id");
+}
 
     protected $table = 'job_listings';
 }
+
+  

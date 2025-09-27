@@ -22,5 +22,4 @@ class JobFactory extends Factory
         'employer_id' => \App\Models\Employer::factory(),
     ];
 }
-
 }
