@@ -2,9 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Employer;
+use App\Models\Job;
+use App\Models\Tag;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,18 +14,18 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
 {
-    // Example default user
-    \App\Models\User::factory()->create([
-        'first_name' => 'John',
-        'last_name'  => 'Doe',
-        'email'      => 'test@example.com',
-    ]);
+    // Create 5 employers
+    $employers = \App\Models\Employer::factory(5)->create();
 
-    // Create tags
+    // Create 10 tags
     $tags = \App\Models\Tag::factory(10)->create();
 
-    // Create jobs and attach random tags
-    \App\Models\Job::factory(20)->create()->each(function($job) use ($tags) {
+    // Create 20 jobs, each linked to a random employer
+    \App\Models\Job::factory(20)->make()->each(function ($job) use ($employers, $tags) {
+        $job->employer_id = $employers->random()->id; // ✅ assign valid employer
+        $job->save();
+
+        // Attach 2 random tags
         $job->tags()->attach($tags->random(2));
     });
 }

@@ -3,39 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Site</title>
+    <title>Job Listing</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100">
+<body class="bg-gray-100 font-sans antialiased">
+
     <!-- Navbar -->
-    <nav class="bg-gray-800 text-white p-4 flex justify-between items-center">
-        <div class="text-xl font-bold">
-            My Site
-        </div>
-        <div class="space-x-6">
-            <x-nav-link href="/" :active="request()->is('/')">Home</x-nav-link>
-            <x-nav-link href="/jobs" :active="request()->is('jobs')">Jobs</x-nav-link>
+    <nav class="bg-gray-900 text-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0 text-2xl font-bold tracking-wide">
+                    Job Listing
+                </div>
+
+                <!-- Nav Links -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="/" class="hover:text-indigo-400 {{ request()->is('/') ? 'text-indigo-400 font-semibold' : '' }}">
+                        Home
+                    </a>
+                    <a href="/jobs" class="hover:text-indigo-400 {{ request()->is('jobs') ? 'text-indigo-400 font-semibold' : '' }}">
+                        Jobs
+                    </a>
+                </div>
+
+                <!-- Action Button -->
+                <div>
+                    <a href="/jobs/create" 
+                       class="bg-indigo-600 hover:bg-indigo-500 px-4 py-2 rounded-lg font-medium shadow">
+                        Create Job
+                    </a>
+                </div>
+            </div>
         </div>
     </nav>
 
-    <nav class="bg-gray-800 text-white p-4 flex justify-between">
-    <div>
-        <a href="/">Home</a>
-        <a href="/jobs" class="ml-4">Jobs</a>
-    </div>
-    <div>
-        <a href="/jobs/create" class="bg-indigo-600 px-3 py-1 rounded">Create Job</a>
-    </div>
-</nav>
+    <!-- Page Header -->
+    <header class="bg-white shadow">
+        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+            <h1 class="text-3xl font-bold text-gray-900">
+                {{ $heading }}
+            </h1>
+        </div>
+    </header>
 
-    <!-- Page Content -->
-    <main class="p-6">
-    <h1 class="text-2xl font-bold mb-4">
-        {{ $heading }}
-    </h1>
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+        <div class="bg-white shadow rounded-lg p-6">
+            {{ $slot }}
+        </div>
+    </main>
 
-    {{ $slot }}
-</main>
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-6 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p>&copy; {{ date('Y') }} Job Listing. All rights reserved.</p>
+        </div>
+    </footer>
 
 </body>
 </html>

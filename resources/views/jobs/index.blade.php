@@ -7,7 +7,10 @@
     @foreach ($jobs as $job)
         <li class="border rounded p-4">
             <a href="/jobs/{{ $job['id'] }}" class="block hover:bg-gray-50">
-                <div class="font-bold text-blue-500">{{ $job->employer->name }}</div>
+                <div class="font-bold text-blue-500">
+                    {{ $job->employer->name ?? 'No Employer Assigned' }}
+                </div>
+
                 <div>
                     <strong>{{ $job['title'] }}</strong> — Pays {{ $job['salary'] }} per year
                 </div>
