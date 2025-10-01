@@ -18,6 +18,16 @@
         </div>
     </nav>
 
+    <nav class="bg-gray-800 text-white p-4 flex justify-between">
+    <div>
+        <a href="/">Home</a>
+        <a href="/jobs" class="ml-4">Jobs</a>
+    </div>
+    <div>
+        <a href="/jobs/create" class="bg-indigo-600 px-3 py-1 rounded">Create Job</a>
+    </div>
+</nav>
+
     <!-- Page Content -->
     <main class="p-6">
     <h1 class="text-2xl font-bold mb-4">
