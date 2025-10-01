@@ -24,5 +24,9 @@
     @endforeach
 </ul>
 
+    <div class="mt-6">
+        {{ $jobs->links() }}
+    </div>
+
 
 </x-layout>
